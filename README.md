@@ -1,9 +1,9 @@
 # Python-applying-object-oriented-programming
  Project initialized by the course "Python: aplicando a Orientação a Objetos" from Alura
+complete project from the course: https://github.com/alura-cursos/curso-python-2/tree/aula_5;
 
-
-## Logic
-Look, I want to add some new business rules to the project started by the course.
+## Business
+Look, I(Maciel) want to add some new business rules to the project started by the course.
 
 0. Need to add restaurant names and categories.
 
