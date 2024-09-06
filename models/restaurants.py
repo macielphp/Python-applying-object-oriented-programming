@@ -23,12 +23,3 @@ class Restaurant:
     def alter_status(self):
         self._active = not self._active
 
-restaurant_park = Restaurant('Park', 'Gormet')
-restaurant_pizza = Restaurant('Pizza Mix', 'Brazilian')
-restaurant_dutto = Restaurant('Dutto', 'Italian')
-
-restaurant_park.alter_status()
-restaurant_pizza.alter_status()
-
-Restaurant.list_restaurants()
- 
