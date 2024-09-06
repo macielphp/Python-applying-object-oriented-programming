@@ -1,23 +1,35 @@
 class Customer:
     customers = []  # Class-level list to store all customers
-    def __init__ (self, name, table):
-        self.name = name
-        self.table = table
+
+    def __init__(self, name, table):
+        self._name = name
+        self._table = table
+        self._paid = False
         Customer.customers.append(self)  # Add the new customer to the list
     
-    def __str__(self):  
-        return f'{self.name} | {self.table}' # String representation of a customer
+    def __str__(self):
+        return f'{self._name.ljust(25)} | {self._table.ljust(25)}'
     
-    def list_customers(self):
-        for customer in Customer.customers:
-            print(f'{customer.name} | {customer.table}')  # Print each customer's name and table
+    @classmethod
+    def list_customers(cls):
+        print(f'{"Customer\'s name".ljust(25)} | {"Table\'s number".ljust(25)} | {"Bill\'s paid"}')
+        for customer in cls.customers:
+            # Use the property `paid` to display '✅' or '☐'
+            print(f'{customer._name.ljust(25)} | {customer._table.ljust(25)} | {customer.paid}')
+
+    @property
+    def paid(self):
+        return '✅' if self._paid else '☐'
+
+    def alter_paid(self):
+        self._paid = not self._paid  # Toggles the payment status
 
 # Create instances of Customer
-customer_maciel = Customer('Maciel', 3)
-customer_julian = Customer('Julian', 5)
+customer_maciel = Customer('Maciel', "3")
+customer_julian = Customer('Julian', "5")
+
+# Change the payment status of customer Julian
+customer_julian.alter_paid()
 
 # List all customers
-customer_maciel.list_customers() # This will print all customers
-
-# Print a specific customer
-print(f'Details of {customer_julian.name}:\n{customer_julian}')  # Using __str__ to print the details of customer_julian
+Customer.list_customers()  # This will now show '✅' or '☐' for the paid status
