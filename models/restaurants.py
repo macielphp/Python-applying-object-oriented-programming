@@ -1,3 +1,5 @@
+from models.rating import Rating
+
 class Restaurant: 
     restaurants = []
 
@@ -5,6 +7,7 @@ class Restaurant:
         self._name = name.title()
         self._category = category
         self._active = False #_active is a private attribuite.
+        self._rating = [] #Stores Customers' names and ratings
         Restaurant.restaurants.append(self)
 
     def __str__(self):
@@ -23,3 +26,6 @@ class Restaurant:
     def alter_status(self):
         self._active = not self._active
 
+    def receive_rating(self, customer, rating):
+        rating = Rating(customer, rating)
+        self._rating.append(rating)
