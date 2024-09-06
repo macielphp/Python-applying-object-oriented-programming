@@ -53,7 +53,7 @@ class Restaurant(Toggleable):
     @property
     def average_rating(self):
         if not self._rating:
-            return 0
+            return 5 # Return 5 if no ratings have been given
         sum_ratings = sum(rating._rating for rating in self._rating)
         rates_length = len(self._rating)
         average = round(sum_ratings / rates_length, 1) # Example: 1,2

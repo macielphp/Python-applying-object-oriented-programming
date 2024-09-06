@@ -2,8 +2,8 @@
  Project initialized by the course "Python: aplicando a Orientação a Objetos" from Alura
 
 
-## Maciel's intended Logic
-Look, I want to add some new business rules.
+## Logic
+Look, I want to add some new business rules to the project started by the course.
 
 0. Need to add restaurant names and categories.
 
@@ -24,5 +24,5 @@ Look, I want to add some new business rules.
 
                             1.1.2.1.1.1.1. Now, the customer has already eaten and owns 499 to the cashier. They decided to pay and rate the restaurant. Then, they leaved it. Now the "Bill's paid' status" is True and Marcos is not responsible of the table number 1 until he attend another customer in the same table.
     
-
+    1.2. If a restaurant has no ratings given by customers, then the rating of it has to start with 5 in order to motivate potencial customers, instead of starting with rating 0.
     
