@@ -1,10 +1,13 @@
-class Team:
+from utils.print_helper import print_table
+from models.toggleable import Toggleable
+
+class Team(Toggleable):  # Inherit from Toggleable to manage active status
     team = []
 
     def __init__(self, name, tables):
+        super().__init__() # Initialize Toggleable for the _active status
         self._name = name.title()
-        self._tables = tables
-        self._active = False
+        self._tables = tables #It is a list
         Team.team.append(self)
 
     def __str__(self):
@@ -13,26 +16,8 @@ class Team:
 
     @classmethod
     def list_members(cls):
-        print(f'{"Member\'s name".ljust(20)} | {"Responsible for table(s) number".ljust(35)} | {"Status"}')
-        for member in cls.team:
-            tables_str = ', '.join(map(str, member._tables)) #Convert list to a string for proper display  
-            print(f"{member._name.ljust(20)} | {tables_str.ljust(35)} | {member.active}")
-
-    @property
-    def active(self):
-        return '✅' if self._active else '❌'
-
-    def alter_status(self):
-        self._active = not self._active
-
-# Creating team members
-team_member_marcos = Team('Marcos', [3, 5])
-team_member_bruno = Team('Bruno', [6, 7, 8])
-team_member_pedro = Team('Pedro', [10, 11, 12])
-
-# Alter status of one member
-team_member_pedro.alter_status()
-
-# List all members
-Team.list_members()
+        headers = ["Member's name", "Responsible for table", "Working"]
+        rows = [[member._name, member._tables, member.active]
+            for member in cls.team]
+        print_table(headers, rows)  # Use print_table for clean output
 
